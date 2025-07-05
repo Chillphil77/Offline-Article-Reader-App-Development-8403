@@ -7,51 +7,38 @@ export const useNavigation = () => {
 
   const goToLibrary = useCallback(() => {
     console.log('Navigation: Going to library');
-    
-    // Method 1: Try React Router first
     try {
-      navigate('/library', { replace: true });
+      navigate('/library');
     } catch (error) {
-      console.warn('React Router navigation failed:', error);
+      console.error('Navigation error:', error);
+      // Fallback to hash navigation
+      window.location.hash = '#/library';
     }
-    
-    // Method 2: Direct hash manipulation (always works with HashRouter)
-    setTimeout(() => {
-      if (window.location.hash !== '#/library') {
-        console.log('Navigation: Using hash fallback');
-        window.location.hash = '#/library';
-      }
-    }, 50);
-    
-    // Method 3: Force reload as last resort
-    setTimeout(() => {
-      if (window.location.hash !== '#/library') {
-        console.log('Navigation: Using force reload');
-        window.location.replace('#/library');
-      }
-    }, 200);
   }, [navigate]);
 
   const goToDashboard = useCallback(() => {
     try {
-      navigate('/', { replace: true });
+      navigate('/');
     } catch (error) {
+      console.error('Navigation error:', error);
       window.location.hash = '#/';
     }
   }, [navigate]);
 
   const goToSettings = useCallback(() => {
     try {
-      navigate('/settings', { replace: true });
+      navigate('/settings');
     } catch (error) {
+      console.error('Navigation error:', error);
       window.location.hash = '#/settings';
     }
   }, [navigate]);
 
   const goToAddArticle = useCallback(() => {
     try {
-      navigate('/add-article', { replace: true });
+      navigate('/add-article');
     } catch (error) {
+      console.error('Navigation error:', error);
       window.location.hash = '#/add-article';
     }
   }, [navigate]);
