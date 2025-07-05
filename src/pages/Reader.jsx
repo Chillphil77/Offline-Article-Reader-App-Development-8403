@@ -151,14 +151,7 @@ const Reader = () => {
   };
 
   const handleBackToLibrary = () => {
-    console.log('Back to Library button clicked');
-    alert('Back button clicked!');
     navigate('/library');
-  };
-
-  const testNavigation = () => {
-    console.log('Test navigation clicked');
-    window.location.hash = '#/library';
   };
 
   if (isLoading) {
@@ -209,14 +202,6 @@ const Reader = () => {
             >
               <SafeIcon icon={FiArrowLeft} className="w-5 h-5" />
               <span>Back to Library</span>
-            </button>
-            
-            {/* Test Button */}
-            <button
-              onClick={testNavigation}
-              className="ml-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-            >
-              Test Nav
             </button>
             
             <div className="flex items-center space-x-2">
@@ -476,7 +461,6 @@ const Reader = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          style={readerStyles}
           className="mx-auto"
         >
           {/* Article Header */}
@@ -508,7 +492,7 @@ const Reader = () => {
           </header>
 
           {/* Article Content */}
-          <div className="reading-content prose prose-lg dark:prose-invert max-w-none">
+          <div className="reading-content prose dark:prose-invert max-w-none" style={readerStyles}>
             {article.content.split('\n').map((paragraph, index) => (
               <p key={index} className="mb-6 text-gray-800 dark:text-gray-200">
                 {paragraph}

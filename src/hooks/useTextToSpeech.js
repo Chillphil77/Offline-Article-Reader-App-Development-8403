@@ -1,3 +1,11 @@
+// NOTE: Piper TTS voices (https://github.com/rhasspy/piper) cannot be used directly in the browser.
+// Piper is a server-side TTS engine. To use Piper voices, you must:
+// 1. Run Piper as a local server (see Piper documentation).
+// 2. Send text to the Piper server, receive a WAV file, and play it in the browser using an <audio> element.
+// This hook only works with browser-supported voices via the SpeechSynthesis API.
+//
+// If you try to use Piper voice files directly in the browser, you will only hear noise.
+
 // Enhanced Text-to-Speech with natural voice selection
 import { useState, useEffect, useCallback } from 'react';
 
