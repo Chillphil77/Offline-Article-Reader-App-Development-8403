@@ -10,6 +10,8 @@ import { useTextToSpeech } from '../hooks/useTextToSpeech';
 import { generatePDF } from '../utils/pdfGenerator';
 import { format } from 'date-fns';
 
+console.log('Reader.jsx loaded');
+
 const { 
   FiArrowLeft, FiHeart, FiShare2, FiDownload, FiVolume2, FiPause, FiPlay, 
   FiType, FiSun, FiMoon, FiBookmark, FiHighlighter, FiMessageCircle, 
@@ -21,6 +23,7 @@ const Reader = () => {
   const navigate = useNavigate();
   const { goToLibrary } = useNavigation();
   const { articles, toggleFavorite, markAsRead, addHighlight, addNote } = useArticles();
+  console.log('Reader mounted, articles:', articles);
   const { settings, updateSetting } = useSettings();
   const { speak, stop, isPlaying, voices, selectedVoice, setSelectedVoice, rate, setRate } = useTextToSpeech();
   

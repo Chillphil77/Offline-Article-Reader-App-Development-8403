@@ -14,6 +14,7 @@ const {
 
 const Library = () => {
   const { articles, toggleFavorite, deleteArticle } = useArticles();
+  console.log('Library mounted, articles:', articles);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
