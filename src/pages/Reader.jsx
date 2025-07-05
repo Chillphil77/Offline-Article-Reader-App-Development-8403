@@ -43,18 +43,12 @@ const Reader = () => {
       markAsRead(id);
       setIsLoading(false);
     } else if (articles.length > 0) {
-      // Only redirect if still on the Reader page after 1 second
-      setTimeout(() => {
-        const isStillOnReader = window.location.hash.includes('/reader');
-        if (isStillOnReader) {
-          console.log('Auto-redirecting to /library because article not found and still on Reader page');
-          navigate('/library');
-        }
-      }, 1000);
+      // Kein Redirect mehr! Nur eine Notiz anzeigen, dass der Artikel nicht gefunden wurde
+      setIsLoading(false);
     } else {
       setIsLoading(false);
     }
-  }, [id, articles, navigate, markAsRead]);
+  }, [id, articles, markAsRead]);
 
   useEffect(() => {
     const handleTextSelection = () => {
