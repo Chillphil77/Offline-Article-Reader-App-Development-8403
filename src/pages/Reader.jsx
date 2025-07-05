@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
@@ -175,12 +175,12 @@ const Reader = () => {
         <div className="text-center">
           <SafeIcon icon={FiBookmark} className="w-16 h-16 text-gray-400 mx-auto mb-4" />
           <p className="text-gray-600 dark:text-gray-400">Article not found</p>
-          <button
-            onClick={handleBackToLibrary}
+          <Link
+            to="/library"
             className="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
           >
             Back to Library
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -200,13 +200,13 @@ const Reader = () => {
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Back Button */}
-            <button
-              onClick={handleBackToLibrary}
+            <Link
+              to="/library"
               className="flex items-center space-x-2 px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors border border-gray-300 dark:border-gray-600 font-medium"
             >
               <SafeIcon icon={FiArrowLeft} className="w-5 h-5" />
               <span>Back to Library</span>
-            </button>
+            </Link>
             
             <div className="flex items-center space-x-2">
               {/* Font Size Controls */}
@@ -537,13 +537,13 @@ const Reader = () => {
                   <span>{pdfGenerating ? 'Generating PDF...' : 'Download PDF'}</span>
                 </button>
 
-                <button
-                  onClick={handleBackToLibrary}
+                <Link
+                  to="/library"
                   className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                 >
                   <SafeIcon icon={FiArrowLeft} className="w-4 h-4" />
                   <span>Back to Library</span>
-                </button>
+                </Link>
               </div>
 
               <div className="text-sm text-gray-500 dark:text-gray-400">
