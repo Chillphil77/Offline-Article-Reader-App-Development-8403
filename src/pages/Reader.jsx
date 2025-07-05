@@ -30,9 +30,25 @@ const Reader = () => {
 
   return (
     <div style={{ padding: 40, maxWidth: 800, margin: '0 auto' }}>
-      <button onClick={() => navigate('/library')} style={{ marginBottom: 20 }}>
+      <button
+        onClick={() => navigate('/library')}
+        style={{
+          marginBottom: 20,
+          background: '#2563eb',
+          color: 'white',
+          padding: '10px 24px',
+          border: 'none',
+          borderRadius: 6,
+          fontSize: 16,
+          fontWeight: 500,
+          cursor: 'pointer',
+        }}
+      >
         Back to Library
       </button>
+      {article.image && (
+        <img src={article.image} alt="Article" style={{ width: '100%', maxHeight: 320, objectFit: 'cover', borderRadius: 8, marginBottom: 24 }} />
+      )}
       <h1 style={{ fontSize: 28, fontWeight: 'bold', marginBottom: 10 }}>{article.title}</h1>
       <div style={{ color: '#666', marginBottom: 10 }}>
         {article.author} • {article.domain} • {article.readTime} min read
