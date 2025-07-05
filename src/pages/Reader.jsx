@@ -40,13 +40,15 @@ const Reader = () => {
       markAsRead(id);
       setIsLoading(false);
     } else if (articles.length > 0) {
-      // Only redirect if we have articles loaded and the specific article is not found
-      // This prevents redirecting when articles are still loading
+      // Only redirect if still on the Reader page after 1 second
       setTimeout(() => {
-        navigate('/library');
+        const isStillOnReader = window.location.hash.includes('/reader');
+        if (isStillOnReader) {
+          console.log('Auto-redirecting to /library because article not found and still on Reader page');
+          navigate('/library');
+        }
       }, 1000);
     } else {
-      // If no articles are loaded yet, just set loading to false
       setIsLoading(false);
     }
   }, [id, articles, navigate, markAsRead]);
@@ -151,6 +153,8 @@ const Reader = () => {
   };
 
   const handleBackToLibrary = () => {
+    console.log('Back to Library button clicked');
+    console.log('Current location:', window.location.hash, window.location.pathname);
     navigate('/library');
   };
 
